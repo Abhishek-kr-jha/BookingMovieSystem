@@ -2,6 +2,8 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRouter from "./Routes/User-routes";
+import adminRouter from "./Routes/admin-routes";
+import movieRouter from "./Routes/movies-routes";
 dotenv.config();
 
 const app = express();
@@ -9,6 +11,8 @@ const app = express();
 // middlewares
 app.use(express.json());
 app.use("/user", userRouter);
+app.use("/admin", adminRouter);
+app.use("/movie", movieRouter);
 
 mongoose.set("strictQuery", false);
 
