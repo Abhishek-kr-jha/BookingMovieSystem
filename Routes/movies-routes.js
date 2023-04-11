@@ -1,8 +1,11 @@
 import express from 'express';
-import { addMovie } from '../Contrrollers/Movies-controllers';
+import { addMovie, getAllMovies, getMovieById } from '../Contrrollers/Movies-controllers';
 
 const movieRouter =express.Router();
 
 movieRouter.post("/",addMovie);
+movieRouter.get("/",getAllMovies);
+movieRouter.get("/:id",getMovieById);
+
 
 export default movieRouter;

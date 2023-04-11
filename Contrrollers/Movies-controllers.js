@@ -55,3 +55,36 @@ export const addMovie = async (req, res, next) => {
   return res.status(201).json({movie});
   
 };
+
+
+export const getAllMovies = async (req,res,next)=>{
+  let movies;
+  try {
+    movies = await Movie.find();
+    
+  } catch (error) {
+    return console.log(error);
+    
+  }
+  if(!movies){
+    return res.status(500).json({message:"Request Failed"})
+  }
+  return res.status(200).json({movies})
+}
+
+export const getMovieById= async(req,res,next)=>{
+  const id = req.params.id;
+  let movie;
+  try {
+    movie = await Movie.findById(id);
+    
+  } catch (error) {
+    return console.log(error);
+    
+  }
+  if(!movie){
+    return res.status(404).json({message:"Invalid Movie  ID"});
+
+  }
+  return res.status(200).json({movie});
+}
